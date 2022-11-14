@@ -2,14 +2,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { IFilm } from "../../interfaces/IFilm";
 import connectMongo from "../../utils/connectMongo";
-const Films = require("../../models/Films");
+const Films = require("../../models/Film");
 
-export default async function user(
+export default async function getMovies(
   req: NextApiRequest,
   res: NextApiResponse<IFilm[]>
 ) {
   await connectMongo();
-  const users: IFilm[] = await Films.find();
-
-  res.status(200).json(users);
+  const movies: IFilm[] = await Films.find();
+  res.status(200).json(movies);
 }

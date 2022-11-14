@@ -1,4 +1,15 @@
-const Film = () => {
+import axios from "axios";
+import getMovies from "../pages/api/movies";
+import { useState } from "react";
+
+export default function Film({ data }) {
+  // const [films, setFilms] = useState([]);
+  // const fetchMovies = async () => {
+  //   const response = await fetch("/api/movies");
+  //   const data = await response.json();
+  //   setFilms(data);
+  // };
+
   return (
     <div>
       <div className="reuInfo">
@@ -8,7 +19,11 @@ const Film = () => {
         <span> | </span>
         <span>Date</span>
       </div>
-      <h2>Titre du film</h2>
+
+      {/* <h2>{films[0].infos.title}</h2> */}
+      {/* <button onClick={fetchMovies}>Load Film</button> */}
+      {console.log(data)}
+
       <div className="filmInfo">
         <div>
           <span>Réalisateur</span>
@@ -30,6 +45,13 @@ const Film = () => {
       </p>
     </div>
   );
-};
+}
 
-export default Film;
+export async function getServerSideProps() {
+  const response = await fetch("http://localhost:3000/api/movies");
+  console.log(response);
+
+  const data = await response.json();
+
+  return { props: { data } };
+}

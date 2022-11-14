@@ -1,5 +1,5 @@
 import { IFilm } from "../interfaces/IFilm";
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const FilmSchema: Schema = new Schema<IFilm>({
   infos: {
@@ -22,6 +22,6 @@ const FilmSchema: Schema = new Schema<IFilm>({
   },
 });
 
-const Film = model("Film", FilmSchema);
+const Film = models.Film || model("Film", FilmSchema);
 
 module.exports = Film;

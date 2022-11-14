@@ -4,7 +4,7 @@ import { IUser } from "../../interfaces/IUser";
 import connectMongo from "../../utils/connectMongo";
 const User = require("../../models/User");
 
-export default async function user(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<IUser[]>
 ) {
