@@ -1,5 +1,5 @@
 import { IUser } from "../interfaces/IUser";
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 //create a schema
 const UserSchema: Schema = new Schema<IUser>({
@@ -8,6 +8,6 @@ const UserSchema: Schema = new Schema<IUser>({
 });
 
 //create a model
-const User = model("User", UserSchema);
+const User = models.User || model("User", UserSchema);
 
 module.exports = User;
