@@ -1,18 +1,24 @@
 import axios from "axios";
 import getMovies from "../pages/api/movies";
 import { useState } from "react";
+import { IFilm } from "../interfaces/IFilm";
 
 export default function Film({ data }) {
-  // const [films, setFilms] = useState([]);
-  // const fetchMovies = async () => {
-  //   const response = await fetch("/api/movies");
-  //   const data = await response.json();
-  //   setFilms(data);
-  // };
-
   return (
     <div>
       <div className="reuInfo">
+        {data.map((film: IFilm) => {
+          return (
+            <div>
+              <h2>{film.infos.title}</h2>
+              <div>
+                <span>{film.infos.director}</span>
+                <p>{film.infos.synopsis}</p>
+              </div>
+              <div>{/* <h3>{film.meeting.date}</h3> */}</div>
+            </div>
+          );
+        })}
         <span>Saison</span>
         <span> | </span>
         <span>CM</span>
@@ -21,8 +27,6 @@ export default function Film({ data }) {
       </div>
 
       {/* <h2>{films[0].infos.title}</h2> */}
-      {/* <button onClick={fetchMovies}>Load Film</button> */}
-      {console.log(data)}
 
       <div className="filmInfo">
         <div>

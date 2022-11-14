@@ -1,23 +1,27 @@
 import styles from "../styles/Home.module.css";
 import Film from "../components/Film";
+import { IFilm } from "../interfaces/IFilm";
+import { GetServerSideProps } from "next";
 
-export default function Home({ data }) {
+interface IFetch {
+  data: IFilm[];
+}
+
+export default function Home(props: IFetch) {
   return (
     <div className={styles.container}>
       <header>
         <img src="" alt="" />
         <h1>Salut</h1>
       </header>
-      <Film data={data} />
+      <Film data={props.data} />
     </div>
   );
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch("http://localhost:3000/api/movies");
   console.log(response);
-
-  const data = await response.json();
-
+  const data: IFilm[] = await response.json();
   return { props: { data } };
-}
+};
