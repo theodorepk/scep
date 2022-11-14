@@ -1,15 +1,15 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { IUser } from "../../interfaces/IUser";
+import { IFilm } from "../../interfaces/IFilm";
 import connectMongo from "../../utils/connectMongo";
-const User = require("../../models/User");
+const Films = require("../../models/Films");
 
 export default async function user(
   req: NextApiRequest,
-  res: NextApiResponse<IUser[]>
+  res: NextApiResponse<IFilm[]>
 ) {
   await connectMongo();
-  const users: IUser[] = await User.find();
+  const users: IFilm[] = await Films.find();
 
   res.status(200).json(users);
 }
