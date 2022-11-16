@@ -1,7 +1,9 @@
 import styles from "../styles/Home.module.css";
-import Film from "../components/Film";
+import Link from "next";
+import Films from "../components/Films";
 import { IFilm } from "../interfaces/IFilm";
 import { GetServerSideProps } from "next";
+import Layout from "../components/Layout";
 
 interface IFetch {
   data: IFilm[];
@@ -10,11 +12,8 @@ interface IFetch {
 export default function Home(props: IFetch) {
   return (
     <div className={styles.container}>
-      <header>
-        <img src="" alt="" />
-        <h1>Salut</h1>
-      </header>
-      <Film data={props.data} />
+      <Layout />
+      <Films data={props.data} />;
     </div>
   );
 }
