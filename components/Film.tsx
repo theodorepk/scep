@@ -1,4 +1,10 @@
-const Film = ({ film }) => {
+import { IFilm } from "../interfaces/IFilm";
+
+type Props = {
+  film: IFilm;
+};
+
+const Film = ({ film }: Props) => {
   return (
     <div>
       <h2>{film.infos.title}</h2>
@@ -7,7 +13,7 @@ const Film = ({ film }) => {
         <p>{film.infos.synopsis}</p>
       </div>
       <div>
-        <h3>{film.meeting.date}</h3>
+        <h3>{film.meeting.date?.toString()}</h3>
       </div>
     </div>
   );

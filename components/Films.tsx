@@ -1,12 +1,14 @@
 import { IFilm } from "../interfaces/IFilm";
 import Film from "./Film";
 
-export default function Films({ data }) {
+type Props = {
+  data: IFilm[];
+};
+
+export default function Films({ data }: Props) {
   return (
     <div>
       <div className="reuInfo">
-        {console.log(data)}
-
         {data.map((film: IFilm) => {
           return <Film film={film} />;
         })}
