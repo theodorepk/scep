@@ -15,16 +15,16 @@ export default async function addMovie(
   if (req.method === "POST") {
     try {
       await connectMongo();
-      const { title, director, year, movieOfTheWeek } = req.body;
+      const { title, director, year } = req.body;
 
+      //input select to choose the user (with fetching user route)
       const user = await User.findOne({ name: "Théodore PK" });
+
       const newMovie: HydratedDocument<IFilm> = new Film({
         infos: {
           title,
           director,
           year,
-          movieOfTheWeek,
-          merde: "merde",
         },
         meeting: {
           cm: user,
