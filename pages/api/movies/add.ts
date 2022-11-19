@@ -15,10 +15,14 @@ export default async function addMovie(
   if (req.method === "POST") {
     try {
       await connectMongo();
-      const { title, director, year } = req.body;
+      const { title, director, year, userId } = req.body;
 
       //input select to choose the user (with fetching user route)
-      const user = await User.findOne({ name: "Théodore PK" });
+      // console.log(req.body);
+      console.log(req.body.userId);
+
+      const user = await User.findOne({ _id: userId });
+      console.log(user);
 
       const newMovie: HydratedDocument<IFilm> = new Film({
         infos: {
@@ -31,8 +35,8 @@ export default async function addMovie(
         },
       });
 
-      await newMovie.save();
-      res.json("is ok");
+      // await newMovie.save();
+      res.json("isOk");
     } catch (error) {
       res.status(400).json({ error });
     }
