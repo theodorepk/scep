@@ -18,7 +18,6 @@ export default async function addMovie(
 
       const test: HydratedDocument<IFilm> = new Film({
         infos: {
-          title,
           director,
           year,
           movieOfTheWeek,

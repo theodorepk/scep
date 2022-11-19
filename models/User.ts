@@ -3,8 +3,8 @@ import { Schema, model, models } from "mongoose";
 
 //create a schema
 const UserSchema: Schema = new Schema<IUser>({
-  name: String,
-  score: Number,
+  name: { type: String, required: true },
+  score: { type: Number, default: 0 },
 });
 
 //create a model
