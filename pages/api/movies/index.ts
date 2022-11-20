@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { HydratedDocument, models } from "mongoose";
+import { HydratedDocument } from "mongoose";
 
 import { IFilm } from "../../../interfaces/IFilm";
 import connectMongo from "../../../utils/connectMongo";

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
+import SearchMovie from "../../components/SearchMovie";
 
 const AddMovie = () => {
   const [users, setUsers] = useState<IUser[]>();
@@ -14,7 +15,7 @@ const AddMovie = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:3000/api/user");
+      const response = await axios.get("http://localhost:3000/api/users");
       setUsers(response.data);
       setIsLoading(false);
     };
@@ -39,7 +40,6 @@ const AddMovie = () => {
     <div>
       <Layout />
       <p>Hello adding</p>
-
       <form
         action=""
         onSubmit={handleSubmit}
@@ -80,6 +80,8 @@ const AddMovie = () => {
         />
         <input type="submit" />
       </form>
+      <span>------------------------</span>
+      <SearchMovie />
     </div>
   );
 };

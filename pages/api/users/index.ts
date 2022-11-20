@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { IUser } from "../../../interfaces/IUser";
 import connectMongo from "../../../utils/connectMongo";
-const User = require("../../models/User");
+const User = require("../../../models/User");
 
 export default async function handler(
   req: NextApiRequest,
