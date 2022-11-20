@@ -5,14 +5,12 @@ import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
 
 const AddMovie = () => {
-  const [movie, setMovie] = useState<IMovieForm>({
-    title: "",
-    director: "",
-    year: "",
-  });
   const [users, setUsers] = useState<IUser[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [userId, setUserId] = useState("");
+  const [title, setTitle] = useState("");
+  const [director, setDirector] = useState("");
+  const [year, setYear] = useState("");
 
   useEffect(() => {
     const fetch = async () => {
@@ -23,14 +21,16 @@ const AddMovie = () => {
     fetch();
   }, []);
 
-  const onSubmit = async (event: HTMLFormElement) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
       const response = await axios.post(
         "http://localhost:3000/api/movies/add",
         {
           userId,
+          title,
+          director,
+          year,
         }
       );
     } catch (error) {}
@@ -43,7 +43,11 @@ const AddMovie = () => {
       <Layout />
       <p>Hello adding</p>
 
-      <form action="" onSubmit={onSubmit}>
+      <form
+        action=""
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexDirection: "column", width: "200px" }}
+      >
         <select
           name="cm"
           id="cm-select"
@@ -58,11 +62,25 @@ const AddMovie = () => {
               );
             })}
           <option value="">Qui es-tu ?</option>
-          <option value="test">test</option>
         </select>
-        <input type="title" />
-        <input type="director" />
-        <input type="year" />
+        <label htmlFor="title">Titre</label>
+        <input
+          type="text"
+          id="title"
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <label htmlFor="director">Réalisateur-Réalisatrice</label>
+        <input
+          type="text"
+          id="director"
+          onChange={(event) => setDirector(event.target.value)}
+        />
+        <label htmlFor="year">Année de sortie</label>
+        <input
+          type="text"
+          id="year"
+          onChange={(event) => setYear(event.target.value)}
+        />
         <input type="submit" />
       </form>
     </div>
