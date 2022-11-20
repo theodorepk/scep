@@ -24,15 +24,12 @@ const AddMovie = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/movies/add",
-        {
-          userId,
-          title,
-          director,
-          year,
-        }
-      );
+      const response = await axios.post("http://localhost:3000/api/movies", {
+        userId,
+        title,
+        director,
+        year,
+      });
     } catch (error) {}
   };
 

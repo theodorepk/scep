@@ -37,5 +37,9 @@ export default async function addMovie(
     } catch (error) {
       res.status(400).json({ error });
     }
+  } else if (req.method === "GET") {
+    await connectMongo();
+    const movies: IFilm[] = await Film.find();
+    res.status(200).json(movies);
   }
 }
