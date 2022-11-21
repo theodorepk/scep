@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TMDBResult from "./TMDBResult";
+
+type Data = {
+  page?: number;
+  results: [];
+};
 
 const SearchMovie = () => {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Data>({ results: [] });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,8 +34,6 @@ const SearchMovie = () => {
           setSearch(event.target.value);
         }}
       />
-      {console.log(search)}
-
       <label htmlFor="">Année</label>
       <input
         type="text"
@@ -37,17 +41,13 @@ const SearchMovie = () => {
           setYear(event.target.value);
         }}
       />
-      {console.log(data)}
+      <br />
       <span>---</span>
+      <br />
 
       {search.length > 3 &&
         data.results.map((result, index) => {
-          return (
-            <>
-              <span key={index}>{result.title}</span>
-              <br />
-            </>
-          );
+          return <TMDBResult key={index} result={result} />;
         })}
     </div>
   );
