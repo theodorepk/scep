@@ -42,7 +42,7 @@ const SearchMovie = () => {
         }}
       />
       <br />
-      <span>---</span>
+      <span className="text-red">---</span>
       <br />
 
       {search.length > 3 &&

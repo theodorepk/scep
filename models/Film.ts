@@ -8,7 +8,7 @@ const FilmSchema: Schema = new Schema<IFilm>({
     year: { type: String, required: true },
     duration: { type: Number, default: 0 },
     synopsis: { type: String, default: "" },
-    poster: { type: Schema.Types.Mixed, default: null },
+    poster: { type: String, default: "" },
     wikiLink: String,
     movieOfTheWeek: { type: Boolean, default: false },
   },

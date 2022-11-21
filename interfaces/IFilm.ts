@@ -7,7 +7,7 @@ export interface IFilm {
     year: string;
     duration?: number;
     synopsis?: string;
-    poster?: null | {};
+    poster?: string;
     wikiLink?: string;
     movieOfTheWeek: boolean;
   };

@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.css";
 import Link from "next";
 import Films from "../components/Films";
 import { IFilm } from "../interfaces/IFilm";
@@ -11,7 +10,8 @@ interface IFetch {
 
 export default function Home(props: IFetch) {
   return (
-    <div className={styles.container}>
+    <div>
+      <span className="text-red-500">Test</span>
       <Layout />
       <Films data={props.data} />;
     </div>

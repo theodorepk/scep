@@ -14,14 +14,17 @@ type Props = {
 const TMDBResult = ({ result }: Props) => {
   return (
     <>
-      {console.log(result)}
-      <span>{result.title}</span>
+      <div>
+        <span className="text-blue-400">{result.title} - </span>
+        <span>{result.release_date.slice(0, 4)}</span>
+      </div>
+
       <img
         src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
         alt="affiche du film"
       />
-      <p>{result.overview}</p>
-      <span>{result.release_date}</span>
+      {/* <p>{result.overview}</p> */}
+
       <br />
     </>
   );
