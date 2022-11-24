@@ -45,10 +45,12 @@ const SearchMovie = () => {
       <span className="text-red">---</span>
       <br />
 
-      {search.length > 3 &&
-        data.results.map((result, index) => {
-          return <TMDBResult key={index} result={result} />;
-        })}
+      <div className="flex flex-nowrap overflow-x-scroll ">
+        {search.length > 3 &&
+          data.results.map((result, index) => {
+            return <TMDBResult key={index} result={result} />;
+          })}
+      </div>
     </div>
   );
 };

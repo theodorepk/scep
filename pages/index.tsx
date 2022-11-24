@@ -20,7 +20,6 @@ export default function Home(props: IFetch) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await fetch("http://localhost:3000/api/movies");
-  console.log(response);
   const data: IFilm[] = await response.json();
   return { props: { data } };
 };

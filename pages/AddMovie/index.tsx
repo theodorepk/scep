@@ -50,6 +50,9 @@ const AddMovie = () => {
           id="cm-select"
           onChange={(event) => setUserId(event.target.value)}
         >
+          <option value="" disabled selected>
+            Qui es-tu ?
+          </option>
           {users &&
             users.map((user, index) => {
               return (
@@ -58,7 +61,6 @@ const AddMovie = () => {
                 </option>
               );
             })}
-          <option value="">Qui es-tu ?</option>
         </select>
         <label htmlFor="title">Titre</label>
         <input
