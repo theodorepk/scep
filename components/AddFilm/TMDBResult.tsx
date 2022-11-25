@@ -11,14 +11,15 @@ type Props = {
     original_language: string;
     poster_path: string;
   };
+  setFilmId: (value: number) => void;
 };
 
-const TMDBResult = ({ result }: Props) => {
+const TMDBResult = ({ result, setFilmId }: Props) => {
   return (
     <div
       className="w-36 shrink-0"
       onClick={() => {
-        console.log(result);
+        setFilmId(result.id);
       }}
     >
       <div>

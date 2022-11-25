@@ -4,12 +4,14 @@ import Layout from "../../components/Layout";
 import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
 import SearchMovie from "../../components/AddFilm/SearchMovie";
+import FilmSelected from "../../components/AddFilm/FilmSelected";
 // import IndyForm from "../../components/AddFilm/IndyForm";
 
 const AddMovie = () => {
   const [users, setUsers] = useState<IUser[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [userId, setUserId] = useState("");
+  const [filmId, setFilmId] = useState(0);
 
   //Get the list of users
   useEffect(() => {
@@ -24,9 +26,8 @@ const AddMovie = () => {
   return isLoading ? (
     <span>is load</span>
   ) : (
-    <div>
+    <div className="w-52">
       <Layout />
-
       <select
         name="cm"
         id="cm-select"
@@ -45,7 +46,8 @@ const AddMovie = () => {
             );
           })}
       </select>
-      <SearchMovie userId={userId} />
+      <FilmSelected filmId={filmId} />
+      <SearchMovie setFilmId={setFilmId} />
       {/* <IndyForm userId={userId} /> */}
     </div>
   );

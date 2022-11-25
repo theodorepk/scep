@@ -8,20 +8,13 @@ type Data = {
 };
 
 type Props = {
-  userId: string;
+  setFilmId: (value: number) => void;
 };
 
-const SearchMovie = ({ userId }: Props) => {
+const SearchMovie = ({ setFilmId }: Props) => {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
   const [data, setData] = useState<Data>({ results: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const [filmToSubmit, setFilmToSubmit] = useState({
-    title: "",
-    director: "",
-    year: "",
-    userId,
-  });
 
   useEffect(() => {
     const fetch = async () => {
@@ -29,7 +22,6 @@ const SearchMovie = ({ userId }: Props) => {
         `http://localhost:3000/api/themoviedb?search=${search}&year=${year}`
       );
       setData(response.data);
-      setIsLoading(false);
     };
     fetch();
   }, [search, year]);
@@ -51,14 +43,12 @@ const SearchMovie = ({ userId }: Props) => {
           setYear(event.target.value);
         }}
       />
-      <br />
-      <span className="text-red">---</span>
-      <br />
-
       <div className="flex flex-nowrap overflow-x-scroll ">
         {search.length > 3 &&
           data.results.map((result, index) => {
-            return <TMDBResult key={index} result={result} />;
+            return (
+              <TMDBResult key={index} result={result} setFilmId={setFilmId} />
+            );
           })}
       </div>
     </div>
