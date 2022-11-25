@@ -8,14 +8,19 @@ type Props = {
 type Credits = {
   id: number;
   cast: [];
-  crew: [];
+  crew: [{ name: string; job: string }];
 };
 
 const FilmSelected = ({ filmId }: Props) => {
   const [credits, setCredits] = useState<Credits>({
     id: 0,
     cast: [],
-    crew: [],
+    crew: [
+      {
+        name: "",
+        job: "",
+      },
+    ],
   });
   const [isLoading, setIsLoading] = useState(true);
 
