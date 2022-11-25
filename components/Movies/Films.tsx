@@ -1,5 +1,5 @@
 import React from "react";
-import { IFilm } from "../interfaces/IFilm";
+import { IFilm } from "../../interfaces/IFilm";
 import Film from "./Film";
 
 type Props = {

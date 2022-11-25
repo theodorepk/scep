@@ -1,4 +1,4 @@
-import { IFilm } from "../interfaces/IFilm";
+import { IFilm } from "../../interfaces/IFilm";
 import React from "react";
 
 type Props = {

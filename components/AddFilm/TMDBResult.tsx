@@ -15,7 +15,12 @@ type Props = {
 
 const TMDBResult = ({ result }: Props) => {
   return (
-    <div className="w-36 shrink-0">
+    <div
+      className="w-36 shrink-0"
+      onClick={() => {
+        console.log(result);
+      }}
+    >
       <div>
         <span className="text-blue-400">{result.title} - </span>
         {result.release_date && (

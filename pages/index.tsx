@@ -1,5 +1,5 @@
 import Link from "next";
-import Films from "../components/Films";
+import Films from "../components/Movies/Films";
 import { IFilm } from "../interfaces/IFilm";
 import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
@@ -11,7 +11,6 @@ interface IFetch {
 export default function Home(props: IFetch) {
   return (
     <div>
-      <span className="text-red-500">Test</span>
       <Layout />
       <Films data={props.data} />;
     </div>

@@ -7,11 +7,21 @@ type Data = {
   results: [];
 };
 
-const SearchMovie = () => {
+type Props = {
+  userId: string;
+};
+
+const SearchMovie = ({ userId }: Props) => {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
   const [data, setData] = useState<Data>({ results: [] });
   const [isLoading, setIsLoading] = useState(true);
+  const [filmToSubmit, setFilmToSubmit] = useState({
+    title: "",
+    director: "",
+    year: "",
+    userId,
+  });
 
   useEffect(() => {
     const fetch = async () => {
