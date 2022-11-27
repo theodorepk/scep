@@ -5,13 +5,22 @@ import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
 import SearchMovie from "../../components/AddFilm/SearchMovie";
 import FilmSelected from "../../components/AddFilm/FilmSelected";
+import { ObjectId } from "mongoose";
 // import IndyForm from "../../components/AddFilm/IndyForm";
 
 const AddMovie = () => {
   const [users, setUsers] = useState<IUser[]>();
   const [isLoading, setIsLoading] = useState(true);
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState<ObjectId>();
   const [filmId, setFilmId] = useState(0);
+  const [filmToAdd, setFilmToAdd] = useState<IMovieForm>({
+    title: "",
+    director: "",
+    year: "",
+    userId: userId,
+    synopsis: "",
+    poster: "",
+  });
 
   //Get the list of users
   useEffect(() => {

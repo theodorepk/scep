@@ -38,10 +38,16 @@ const FilmSelected = ({ filmId }: Props) => {
   }, [filmId]);
 
   return !isLoading ? (
-    <div>
-      <h2 className="border-solid border-2 border-black">Film Selected</h2>
-      <div className="border-solid border border-black">
+    <div className="border-solid border-2 border-blue-500">
+      <h2 className="underline">Film Selected</h2>
+      <div className="border-solid border border-slate-600">
         <h3>Résalisateur</h3>
+        <span>
+          {credits.crew.filter((member) => member.job === "Director")[0].name}
+        </span>
+      </div>
+      <div className="border-solid border border-slate-600">
+        <h3>Titre</h3>
         <span>
           {credits.crew.filter((member) => member.job === "Director")[0].name}
         </span>
@@ -50,19 +56,6 @@ const FilmSelected = ({ filmId }: Props) => {
   ) : (
     <span> Not Ready</span>
   );
-
-  //   return (
-  //     <div>
-  //       <h2 className="border-solid border-2 border-black">Film Selected</h2>
-  //       <div className="border-solid border border-black">
-  //         <h3>Résalisateur</h3>
-  //         {console.log(
-  //           credits.crew.filter((member) => member.job === "Director")
-  //         )}
-  //         <span></span>
-  //       </div>
-  //     </div>
-  //   );
 };
 
 export default FilmSelected;

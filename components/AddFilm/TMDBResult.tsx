@@ -36,7 +36,6 @@ const TMDBResult = ({ result, setFilmId }: Props) => {
         alt="affiche du film"
         className="h-48 w-full"
       />
-      {/* <p>{result.overview}</p> */}
     </div>
   );
 };
