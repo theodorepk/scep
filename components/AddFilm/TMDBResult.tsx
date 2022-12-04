@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { IMovieForm } from "../../interfaces/IMovieForm";
 
 type Props = {
   result: {
@@ -12,14 +13,22 @@ type Props = {
     poster_path: string;
   };
   setFilmId: (value: number) => void;
+  setFilmToAdd: (value: IMovieForm) => void;
 };
 
-const TMDBResult = ({ result, setFilmId }: Props) => {
+const TMDBResult = ({ result, setFilmId, setFilmToAdd }: Props) => {
   return (
     <div
       className="w-36 shrink-0"
       onClick={() => {
         setFilmId(result.id);
+        setFilmToAdd({
+          title: result.title,
+          year: result.release_date,
+          synopsis: result.overview,
+          poster: `https://image.tmdb.org/t/p/w500/${result.poster_path}`,
+          filmId: result.id,
+        });
       }}
     >
       <div>

@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { IMovieForm } from "../../interfaces/IMovieForm";
 
 type Props = {
   filmId: number;
+  filmToAdd: IMovieForm;
 };
 
 type Credits = {
@@ -11,7 +13,7 @@ type Credits = {
   crew: [{ name: string; job: string }];
 };
 
-const FilmSelected = ({ filmId }: Props) => {
+const FilmSelected = ({ filmId, filmToAdd }: Props) => {
   const [credits, setCredits] = useState<Credits>({
     id: 0,
     cast: [],
@@ -48,13 +50,22 @@ const FilmSelected = ({ filmId }: Props) => {
       </div>
       <div className="border-solid border border-slate-600">
         <h3>Titre</h3>
-        <span>
-          {credits.crew.filter((member) => member.job === "Director")[0].name}
-        </span>
+        <span>{filmToAdd.title}</span>
+      </div>
+      <div className="border-solid border border-slate-600">
+        <h3>Résumé</h3>
+        <p>{filmToAdd.synopsis}</p>
+      </div>
+      <div className="border-solid border border-slate-600">
+        <h3>Année</h3>
+        <p>{filmToAdd.year}</p>
+      </div>
+      <div className="border-solid border border-slate-600">
+        <img src={filmToAdd.poster} />
       </div>
     </div>
   ) : (
-    <span> Not Ready</span>
+    <span> Aucun film de sélectionné</span>
   );
 };
 

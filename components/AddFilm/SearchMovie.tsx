@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TMDBResult from "./TMDBResult";
+import { IMovieForm } from "../../interfaces/IMovieForm";
 
 type Data = {
   page?: number;
@@ -9,9 +10,10 @@ type Data = {
 
 type Props = {
   setFilmId: (value: number) => void;
+  setFilmToAdd: (value: IMovieForm) => void;
 };
 
-const SearchMovie = ({ setFilmId }: Props) => {
+const SearchMovie = ({ setFilmId, setFilmToAdd }: Props) => {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
   const [data, setData] = useState<Data>({ results: [] });
@@ -47,7 +49,12 @@ const SearchMovie = ({ setFilmId }: Props) => {
         {search.length > 3 &&
           data.results.map((result, index) => {
             return (
-              <TMDBResult key={index} result={result} setFilmId={setFilmId} />
+              <TMDBResult
+                key={index}
+                result={result}
+                setFilmId={setFilmId}
+                setFilmToAdd={setFilmToAdd}
+              />
             );
           })}
       </div>

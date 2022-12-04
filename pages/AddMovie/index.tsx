@@ -11,7 +11,7 @@ import { ObjectId } from "mongoose";
 const AddMovie = () => {
   const [users, setUsers] = useState<IUser[]>();
   const [isLoading, setIsLoading] = useState(true);
-  const [userId, setUserId] = useState<ObjectId>();
+  const [userId, setUserId] = useState<string>();
   const [filmId, setFilmId] = useState(0);
   const [filmToAdd, setFilmToAdd] = useState<IMovieForm>({
     title: "",
@@ -20,6 +20,7 @@ const AddMovie = () => {
     userId: userId,
     synopsis: "",
     poster: "",
+    filmId: 0,
   });
 
   //Get the list of users
@@ -35,7 +36,7 @@ const AddMovie = () => {
   return isLoading ? (
     <span>is load</span>
   ) : (
-    <div className="w-52">
+    <div className="w-96">
       <Layout />
       <select
         name="cm"
@@ -55,8 +56,8 @@ const AddMovie = () => {
             );
           })}
       </select>
-      <FilmSelected filmId={filmId} />
-      <SearchMovie setFilmId={setFilmId} />
+      <FilmSelected filmId={filmId} filmToAdd={filmToAdd} />
+      <SearchMovie setFilmId={setFilmId} setFilmToAdd={setFilmToAdd} />
       {/* <IndyForm userId={userId} /> */}
     </div>
   );
