@@ -9,12 +9,11 @@ type Data = {
 };
 
 type Props = {
-  setFilmId: (value: number) => void;
   setFilmToAdd: (value: IMovieForm) => void;
   setIsActive: (value: boolean) => void;
 };
 
-const SearchMovie = ({ setFilmId, setFilmToAdd, setIsActive }: Props) => {
+const SearchMovie = ({ setFilmToAdd, setIsActive }: Props) => {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
   const [data, setData] = useState<Data>({ results: [] });
@@ -38,6 +37,7 @@ const SearchMovie = ({ setFilmId, setFilmToAdd, setIsActive }: Props) => {
         onChange={(event) => {
           setSearch(event.target.value);
         }}
+        className="w-40"
       />
       <label htmlFor="">Année</label>
       <input
@@ -45,17 +45,17 @@ const SearchMovie = ({ setFilmId, setFilmToAdd, setIsActive }: Props) => {
         onChange={(event) => {
           setYear(event.target.value);
         }}
+        className="w-12"
       />
       <div
       //  className="flex flex-nowrap overflow-x-scroll "
       >
         {search.length > 3 &&
-          data.results.map((result, index) => {
+          data.results.map((film, index) => {
             return (
               <TMDBResult
                 key={index}
-                result={result}
-                setFilmId={setFilmId}
+                film={film}
                 setFilmToAdd={setFilmToAdd}
                 setIsActive={setIsActive}
               />

@@ -58,11 +58,7 @@ const AddMovie = () => {
             );
           })}
       </select>
-      <SearchMovie
-        setFilmId={setFilmId}
-        setFilmToAdd={setFilmToAdd}
-        setIsActive={setIsActive}
-      />
+      <SearchMovie setFilmToAdd={setFilmToAdd} setIsActive={setIsActive} />
       {isActive && (
         <FilmSelected
           filmId={filmId}
