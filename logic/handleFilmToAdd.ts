@@ -2,7 +2,7 @@ import { IDetailFilm } from "../interfaces/IDetailFilm";
 import { IMovieForm } from "../interfaces/IMovieForm";
 import axios from "axios";
 
-export const handleCredits = async (
+export const handleFilmToAdd = async (
   film: IDetailFilm,
   setFilmToAdd: (value: IMovieForm) => void
 ) => {

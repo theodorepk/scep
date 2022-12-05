@@ -47,9 +47,7 @@ const SearchMovie = ({ setFilmToAdd, setIsActive }: Props) => {
         }}
         className="w-12"
       />
-      <div
-      //  className="flex flex-nowrap overflow-x-scroll "
-      >
+      <div className="w-screen flex flex-nowrap overflow-x-scroll border-4 border-solid border-red-500">
         {search.length > 3 &&
           data.results.map((film, index) => {
             return (

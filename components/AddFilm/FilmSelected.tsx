@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { IMovieForm } from "../../interfaces/IMovieForm";
 import { GrClose } from "react-icons/gr";
 import { IconContext } from "react-icons";
@@ -8,12 +6,6 @@ type Props = {
   filmId: number;
   filmToAdd: IMovieForm;
   setIsActive: (value: boolean) => void;
-};
-
-type Credits = {
-  id: number;
-  cast: [];
-  crew: [{ name: string; job: string }];
 };
 
 const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
@@ -32,7 +24,7 @@ const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
             </IconContext.Provider>
           </button>
         </div>
-        {/* {!isLoading ? ( */}
+
         <div>
           <div className="text-center">
             <span className="font-bold ">{filmToAdd.title}</span>
@@ -52,9 +44,6 @@ const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
 
           <img src={filmToAdd.poster} className="h-64" />
         </div>
-        {/* ) : (
-          <span> Aucun film de sélectionné</span>
-        )} */}
       </div>
     </div>
   );
