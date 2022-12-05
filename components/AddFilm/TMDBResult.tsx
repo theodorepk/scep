@@ -14,9 +14,15 @@ type Props = {
   };
   setFilmId: (value: number) => void;
   setFilmToAdd: (value: IMovieForm) => void;
+  setIsActive: (value: boolean) => void;
 };
 
-const TMDBResult = ({ result, setFilmId, setFilmToAdd }: Props) => {
+const TMDBResult = ({
+  result,
+  setFilmId,
+  setFilmToAdd,
+  setIsActive,
+}: Props) => {
   return (
     <div
       className="w-36 shrink-0"
@@ -29,6 +35,7 @@ const TMDBResult = ({ result, setFilmId, setFilmToAdd }: Props) => {
           poster: `https://image.tmdb.org/t/p/w500/${result.poster_path}`,
           filmId: result.id,
         });
+        setIsActive(true);
       }}
     >
       <div>

@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IMovieForm } from "../../interfaces/IMovieForm";
+import { GrClose } from "react-icons/gr";
+import { IconContext } from "react-icons";
 
 type Props = {
   filmId: number;
   filmToAdd: IMovieForm;
+  setIsActive: (value: boolean) => void;
 };
 
 type Credits = {
@@ -13,7 +16,7 @@ type Credits = {
   crew: [{ name: string; job: string }];
 };
 
-const FilmSelected = ({ filmId, filmToAdd }: Props) => {
+const FilmSelected = ({ filmId, filmToAdd, setIsActive }: Props) => {
   const [credits, setCredits] = useState<Credits>({
     id: 0,
     cast: [],
@@ -39,39 +42,51 @@ const FilmSelected = ({ filmId, filmToAdd }: Props) => {
     fetch();
   }, [filmId]);
 
-  return !isLoading ? (
-    <div className="fixed bg-white w-screen h-screen top-0 flex justify-center items-center bg-opacity-50">
-      <div className=" bg-black w-10/12 h-5/6 border-solid border-2 border-blue-500">
-        <div className="flex justify-between">
-          <h2 className="underline">Film Selected</h2>
-          <button>X</button>
+  return (
+    <div className="bg-opacity-50 bg-black w-screen h-screen fixed top-0 flex justify-center items-center p-2.5">
+      <div className="flex-col bg-slate-800	border-solid border-2 border-blue-500 w-full h-full">
+        <div className="flex justify-end">
+          <button
+            className="bg-white"
+            onClick={() => {
+              setIsActive(false);
+            }}
+          >
+            <IconContext.Provider value={{ size: "2em" }}>
+              <GrClose />
+            </IconContext.Provider>
+          </button>
         </div>
+        {!isLoading ? (
+          <div>
+            <div className="text-center">
+              <span className="font-bold ">{filmToAdd.title}</span>
+            </div>
+            <div>
+              <span className="font-bold">De : </span>
+              <span>
+                {
+                  credits.crew.filter((member) => member.job === "Director")[0]
+                    .name
+                }
+              </span>
+            </div>
+            <div>
+              <span className="font-bold">Sortie : </span>
+              <span>{filmToAdd.year.slice(0, 4)}</span>
+            </div>
+            <div className="border-solid border border-slate-600">
+              <h3>Résumé</h3>
+              <p>{filmToAdd.synopsis}</p>
+            </div>
 
-        <div className="border-solid border border-slate-600">
-          <h3>Résalisateur</h3>
-          <span>
-            {credits.crew.filter((member) => member.job === "Director")[0].name}
-          </span>
-        </div>
-        <div className="border-solid border border-slate-600">
-          <h3>Titre</h3>
-          <span>{filmToAdd.title}</span>
-        </div>
-        <div className="border-solid border border-slate-600">
-          <h3>Résumé</h3>
-          <p>{filmToAdd.synopsis}</p>
-        </div>
-        <div className="border-solid border border-slate-600">
-          <h3>Année</h3>
-          <p>{filmToAdd.year}</p>
-        </div>
-        <div className="border-solid border border-slate-600">
-          <img src={filmToAdd.poster} className="h-64" />
-        </div>
+            <img src={filmToAdd.poster} className="h-64" />
+          </div>
+        ) : (
+          <span> Aucun film de sélectionné</span>
+        )}
       </div>
     </div>
-  ) : (
-    <span> Aucun film de sélectionné</span>
   );
 };
 

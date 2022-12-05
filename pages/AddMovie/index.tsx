@@ -22,6 +22,7 @@ const AddMovie = () => {
     poster: "",
     filmId: 0,
   });
+  const [isActive, setIsActive] = useState(false);
 
   //Get the list of users
   useEffect(() => {
@@ -36,8 +37,9 @@ const AddMovie = () => {
   return isLoading ? (
     <span>is load</span>
   ) : (
-    <div className="w-96">
+    <div>
       <Layout />
+
       <select
         name="cm"
         id="cm-select"
@@ -56,8 +58,19 @@ const AddMovie = () => {
             );
           })}
       </select>
-      <FilmSelected filmId={filmId} filmToAdd={filmToAdd} />
-      <SearchMovie setFilmId={setFilmId} setFilmToAdd={setFilmToAdd} />
+      <SearchMovie
+        setFilmId={setFilmId}
+        setFilmToAdd={setFilmToAdd}
+        setIsActive={setIsActive}
+      />
+      {isActive && (
+        <FilmSelected
+          filmId={filmId}
+          filmToAdd={filmToAdd}
+          setIsActive={setIsActive}
+        />
+      )}
+
       {/* <IndyForm userId={userId} /> */}
     </div>
   );

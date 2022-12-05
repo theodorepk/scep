@@ -11,9 +11,10 @@ type Data = {
 type Props = {
   setFilmId: (value: number) => void;
   setFilmToAdd: (value: IMovieForm) => void;
+  setIsActive: (value: boolean) => void;
 };
 
-const SearchMovie = ({ setFilmId, setFilmToAdd }: Props) => {
+const SearchMovie = ({ setFilmId, setFilmToAdd, setIsActive }: Props) => {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
   const [data, setData] = useState<Data>({ results: [] });
@@ -45,7 +46,9 @@ const SearchMovie = ({ setFilmId, setFilmToAdd }: Props) => {
           setYear(event.target.value);
         }}
       />
-      <div className="flex flex-nowrap overflow-x-scroll ">
+      <div
+      //  className="flex flex-nowrap overflow-x-scroll "
+      >
         {search.length > 3 &&
           data.results.map((result, index) => {
             return (
@@ -54,6 +57,7 @@ const SearchMovie = ({ setFilmId, setFilmToAdd }: Props) => {
                 result={result}
                 setFilmId={setFilmId}
                 setFilmToAdd={setFilmToAdd}
+                setIsActive={setIsActive}
               />
             );
           })}
