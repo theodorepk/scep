@@ -1,16 +1,7 @@
 import { IMovieForm } from "../../interfaces/IMovieForm";
+import { IDetailFilm } from "../../interfaces/IDetailFilm";
 import axios from "axios";
-
-interface IDetailFilm {
-  adult: boolean;
-  id: number;
-  original_title: string;
-  title: string;
-  overview: string;
-  release_date: string;
-  original_language: string;
-  poster_path: string;
-}
+import { handleCredits } from "../../logic/handleCredits";
 
 type Props = {
   film: IDetailFilm;
@@ -19,31 +10,12 @@ type Props = {
 };
 
 const TMDBResult = ({ film, setFilmToAdd, setIsActive }: Props) => {
-  const handleCredits = async (id: number, film: IDetailFilm) => {
-    const response = await axios.get(
-      `http://localhost:3000/api/themoviedb/${id}`
-    );
-
-    const director: string = response.data.crew.filter(
-      (member: { name: string; job: string }) => member.job === "Director"
-    )[0].name;
-
-    setFilmToAdd({
-      title: film.title,
-      director: director,
-      year: film.release_date,
-      synopsis: film.overview,
-      poster: `https://image.tmdb.org/t/p/w500/${film.poster_path}`,
-      filmId: film.id,
-    });
-  };
-
   return (
     <div
       className="w-full shrink-0"
       onClick={() => {
         setIsActive(true);
-        handleCredits(film.id, film);
+        handleCredits(film, setFilmToAdd);
       }}
     >
       <div>
