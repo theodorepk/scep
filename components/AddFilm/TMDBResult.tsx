@@ -19,12 +19,27 @@ const TMDBResult = ({ film, setFilmToAdd, setIsActive }: Props) => {
         handleFilmToAdd(film, setFilmToAdd);
       }}
     >
-      <Image
-        src={popcorn}
-        // src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
-        className="w-full h-56 object-cover"
-        alt="affiche du film"
-      />
+      {console.log(film.poster_path)}
+      {film.poster_path ? (
+        <Image
+          // unoptimized
+          src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+          className="w-full h-56 object-cover"
+          alt="affiche du film"
+          // layout="fill"
+          width={100}
+          height={224}
+        />
+      ) : (
+        <Image
+          src={popcorn}
+          className="w-full h-56 object-cover"
+          alt="affiche du film"
+          // layout="fill"
+          width={100}
+          height={224}
+        />
+      )}
 
       {/* <img
      
