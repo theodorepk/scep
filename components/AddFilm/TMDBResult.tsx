@@ -1,6 +1,8 @@
 import { IMovieForm } from "../../interfaces/IMovieForm";
 import { IDetailFilm } from "../../interfaces/IDetailFilm";
 import { handleFilmToAdd } from "../../logic/handleFilmToAdd";
+import popcorn from "../../assets/images/popcorn.png";
+import Image from "next/image";
 
 type Props = {
   film: IDetailFilm;
@@ -11,22 +13,35 @@ type Props = {
 const TMDBResult = ({ film, setFilmToAdd, setIsActive }: Props) => {
   return (
     <div
-      className="w-2/5 shrink-0 bg-orange-400 border border-solid border-cyan-500"
+      className="w-2/5 shrink-0  border border-solid border-cyan-500 mr-1 first:ml-1"
       onClick={() => {
         setIsActive(true);
         handleFilmToAdd(film, setFilmToAdd);
       }}
     >
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
+      <Image
+        src={popcorn}
+        // src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
+        className="w-full h-56 object-cover"
         alt="affiche du film"
-        className="h-48 w-4/6 object-contain"
       />
+
+      {/* <img
+     
+        src={popcorn}
+  
+        // onError={({ currentTarget }) => {
+        //   currentTarget.onerror = null; // prevents looping
+        //   currentTarget.src = "";
+        // }}
+        className="w-full h-56 object-cover"
+      /> */}
+      <div className="h-11">
+        {/* line-clamp tailwind module for overflow on line 2 */}
+        <p className=" line-clamp-2 font-bold">{film.title}</p>
+      </div>
       <div>
-        <span className="text-blue-400">{film.title} - </span>
-        {film.release_date && (
-          <span className="text-red-600">{film.release_date.slice(0, 4)}</span>
-        )}
+        {film.release_date && <span>{film.release_date.slice(0, 4)}</span>}
       </div>
     </div>
   );

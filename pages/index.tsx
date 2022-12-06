@@ -1,4 +1,3 @@
-import Link from "next";
 import Films from "../components/Movies/Films";
 import { IFilm } from "../interfaces/IFilm";
 import { GetServerSideProps } from "next";

@@ -5,7 +5,6 @@ import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
 import SearchMovie from "../../components/AddFilm/SearchMovie";
 import FilmSelected from "../../components/AddFilm/FilmSelected";
-import { ObjectId } from "mongoose";
 // import IndyForm from "../../components/AddFilm/IndyForm";
 
 const AddMovie = () => {
