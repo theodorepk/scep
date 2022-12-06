@@ -13,33 +13,35 @@ type Props = {
 const TMDBResult = ({ film, setFilmToAdd, setIsActive }: Props) => {
   return (
     <div
-      className="w-2/5 shrink-0  border border-solid border-cyan-500 mr-1 first:ml-1"
+      className=" w-2/5 shrink-0  border border-solid border-cyan-500 mr-1 first:ml-1"
       onClick={() => {
         setIsActive(true);
         handleFilmToAdd(film, setFilmToAdd);
       }}
     >
-      {console.log(film.poster_path)}
-      {film.poster_path ? (
-        <Image
-          // unoptimized
-          src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-          className="w-full h-56 object-cover"
-          alt="affiche du film"
-          // layout="fill"
-          width={100}
-          height={224}
-        />
-      ) : (
-        <Image
-          src={popcorn}
-          className="w-full h-56 object-cover"
-          alt="affiche du film"
-          // layout="fill"
-          width={100}
-          height={224}
-        />
-      )}
+      <div className="w-full h-56 relative ">
+        {film.poster_path ? (
+          <Image
+            // unoptimized
+            src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+            // className="w-full h-56 object-cover"
+            alt="affiche du film"
+            layout="fill"
+            objectFit="cover"
+
+            // height={224}
+          />
+        ) : (
+          <Image
+            src={popcorn}
+            className="w-full h-56 object-cover"
+            alt="affiche du film"
+            // layout="fill"
+            width={100}
+            height={224}
+          />
+        )}
+      </div>
 
       {/* <img
      
