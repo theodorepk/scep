@@ -11,7 +11,7 @@ const Film: React.FC<Props> = ({ film }: Props) => {
       <h2>{film.infos.title}</h2>
       <div>
         <span>{film.infos.director}</span>
-        <p>{film.infos.synopsis}</p>
+        <p className="truncate">{film.infos.synopsis}</p>
       </div>
       <div>
         <h3>{film.meeting.date?.toString()}</h3>
@@ -35,11 +35,6 @@ const Film: React.FC<Props> = ({ film }: Props) => {
         <span> image</span>
         <span> + </span>
       </div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error nihil
-        facilis nostrum fugit enim nam. Assumenda maxime rem labore sed
-        possimus. Earum asperiores vero quia reiciendis ex aperiam sed ratione.
-      </p>
     </div>
   );
 };

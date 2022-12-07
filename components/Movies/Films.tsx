@@ -9,7 +9,7 @@ type Props = {
 const Films: React.FC<Props> = ({ data }) => {
   return (
     <div>
-      <div className="reuInfo">
+      <div className="w-full">
         {data.map((film: IFilm, index: React.Key) => {
           return <Film film={film} key={index} />;
         })}
