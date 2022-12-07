@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        orbitron: ["Orbitron", "sans-serif"],
+      },
+    },
   },
   plugins: [require("@tailwindcss/line-clamp")],
 };
