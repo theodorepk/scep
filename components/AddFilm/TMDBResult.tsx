@@ -22,37 +22,21 @@ const TMDBResult = ({ film, setFilmToAdd, setIsActive }: Props) => {
       <div className="w-full h-56 relative ">
         {film.poster_path ? (
           <Image
-            // unoptimized
             src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-            // className="w-full h-56 object-cover"
             alt="affiche du film"
             layout="fill"
             objectFit="cover"
-
-            // height={224}
           />
         ) : (
           <Image
             src={popcorn}
             className="w-full h-56 object-cover"
             alt="affiche du film"
-            // layout="fill"
-            width={100}
-            height={224}
+            layout="fill"
+            objectFit="cover"
           />
         )}
       </div>
-
-      {/* <img
-     
-        src={popcorn}
-  
-        // onError={({ currentTarget }) => {
-        //   currentTarget.onerror = null; // prevents looping
-        //   currentTarget.src = "";
-        // }}
-        className="w-full h-56 object-cover"
-      /> */}
       <div className="h-11">
         {/* line-clamp tailwind module for overflow on line 2 */}
         <p className=" line-clamp-2 font-bold">{film.title}</p>
