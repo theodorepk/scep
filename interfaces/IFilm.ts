@@ -4,16 +4,18 @@ export interface IFilm {
   infos: {
     title: string;
     director: string;
-    year: string;
+    release_date: string;
     duration?: number;
     synopsis?: string;
     poster?: string;
-    wikiLink?: string;
     movieOfTheWeek: boolean;
+    tmdbId: number;
   };
   meeting: {
-    episode: string;
+    season: number;
+    episode: number;
     date: Date | undefined;
     cm: Types.ObjectId;
+    attendance: [{ user: Types.ObjectId; note: null | number }];
   };
 }

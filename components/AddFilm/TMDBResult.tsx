@@ -17,6 +17,7 @@ const TMDBResult = ({ film, setFilmToAdd, setIsActive }: Props) => {
       onClick={() => {
         setIsActive(true);
         handleFilmToAdd(film, setFilmToAdd);
+        console.log(film);
       }}
     >
       <div className="w-full h-56 relative ">

@@ -35,7 +35,7 @@ const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
           </div>
           <div>
             <span className="font-bold">Sortie : </span>
-            <span>{filmToAdd.year.slice(0, 4)}</span>
+            <span>{filmToAdd.release_date.slice(0, 4)}</span>
           </div>
           <div className="border-solid border border-slate-600">
             <h3>Résumé</h3>

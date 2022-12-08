@@ -15,7 +15,7 @@ const AddMovie = () => {
   const [filmToAdd, setFilmToAdd] = useState<IMovieForm>({
     title: "",
     director: "",
-    year: "",
+    release_date: "",
     userId: userId,
     synopsis: "",
     poster: "",

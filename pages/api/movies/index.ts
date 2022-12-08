@@ -15,7 +15,15 @@ export default async function addMovie(
   if (req.method === "POST") {
     try {
       await connectMongo();
-      const { title, director, year, userId } = req.body;
+      const {
+        title,
+        director,
+        release_date,
+        userId,
+        synopsis,
+        poster,
+        tmdbId,
+      } = req.body;
       //input select to choose the user (with fetching user route)
       const user = await User.findOne({ _id: userId });
 
@@ -23,7 +31,10 @@ export default async function addMovie(
         infos: {
           title,
           director,
-          year,
+          release_date,
+          synopsis,
+          poster,
+          tmdbId,
         },
         meeting: {
           cm: user,

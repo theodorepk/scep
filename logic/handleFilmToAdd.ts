@@ -17,7 +17,7 @@ export const handleFilmToAdd = async (
   setFilmToAdd({
     title: film.title,
     director: director,
-    year: film.release_date,
+    release_date: film.release_date,
     synopsis: film.overview,
     poster: `https://image.tmdb.org/t/p/w500/${film.poster_path}`,
     filmId: film.id,

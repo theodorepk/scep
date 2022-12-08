@@ -7,7 +7,7 @@ type Props = {
 
 const Film: React.FC<Props> = ({ film }: Props) => {
   return (
-    <div>
+    <div className="">
       <h2>{film.infos.title}</h2>
       <div>
         <span>{film.infos.director}</span>

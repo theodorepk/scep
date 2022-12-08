@@ -1,7 +1,7 @@
 export interface IMovieForm {
   title: string;
   director?: string;
-  year: string;
+  release_date: string;
   userId?: string | undefined;
   synopsis: string;
   poster: string;
