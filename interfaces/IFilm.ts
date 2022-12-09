@@ -6,10 +6,8 @@ export interface IFilm {
     title: string;
     director: string;
     release_date: string;
-    duration?: number;
     synopsis?: string;
     poster?: string;
-    movieOfTheWeek: boolean;
     tmdbId: number;
   };
   meeting: {

@@ -6,10 +6,8 @@ const FilmSchema: Schema = new Schema<IFilm>({
     title: { type: String, required: true },
     director: { type: String, required: true },
     release_date: { type: String, required: true },
-    duration: { type: Number, default: 0 },
     synopsis: { type: String, default: "" },
     poster: { type: String, default: "" },
-    movieOfTheWeek: { type: Boolean, default: false },
   },
   meeting: {
     episode: String,
