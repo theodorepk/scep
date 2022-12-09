@@ -56,7 +56,7 @@ export default async function addMovie(
         path: "cm",
       },
     });
-    console.log(movies[0]);
+    // console.log(movies[0]);
 
     res.status(200).json(movies);
   }

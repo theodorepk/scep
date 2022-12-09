@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { IUser } from "./IUser";
 
 export interface IFilm {
   infos: {
@@ -15,7 +16,7 @@ export interface IFilm {
     season: number;
     episode: number;
     date: Date | undefined;
-    cm: Types.ObjectId;
+    cm: IUser;
     attendance: [{ user: Types.ObjectId; note: null | number }];
   };
 }
