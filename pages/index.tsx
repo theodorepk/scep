@@ -1,4 +1,4 @@
-import Films from "../components/Movies/Films";
+import Films from "../components/Planning/Films";
 import { IFilm } from "../interfaces/IFilm";
 import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
@@ -11,7 +11,7 @@ export default function Home(props: IFetch) {
   return (
     <div className="w-screen">
       <Layout />
-      <Films data={props.data} />;
+      <Films data={props.data} />
     </div>
   );
 }

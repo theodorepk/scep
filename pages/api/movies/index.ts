@@ -50,7 +50,14 @@ export default async function addMovie(
     }
   } else if (req.method === "GET") {
     await connectMongo();
-    const movies: IFilm[] = await Film.find();
+    const movies: IFilm[] = await Film.find().populate({
+      path: "meeting",
+      populate: {
+        path: "cm",
+      },
+    });
+    console.log(movies[0]);
+
     res.status(200).json(movies);
   }
 }
