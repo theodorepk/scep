@@ -3,14 +3,13 @@ import React from "react";
 
 type Props = {
   film: IFilm;
-  episode: number;
 };
 
-const Film: React.FC<Props> = ({ film, episode }: Props) => {
+const Film: React.FC<Props> = ({ film }: Props) => {
   return (
     <div className="flex  w-screen h-40 border">
       <span className=" bg-cyan-500 border  dark:bg-cyan-900 w-[10%] flex justify-center items-center">
-        {episode}
+        {film.meeting.episode}
       </span>
       <div className="bg-red-400 dark:bg-red-900 w-[45%] flex flex-col">
         <span className="font-bold"> {film.infos.title}</span>

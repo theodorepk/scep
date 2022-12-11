@@ -9,6 +9,7 @@ type Props = {
 const Films: React.FC<Props> = ({ data }) => {
   const [season, setSeason] = useState(13);
   const [seasons, setSeasons] = useState<Array<number>>([]);
+  const [planningSeason, SetPlanningSeason] = useState(season);
 
   useEffect(() => {
     let tab = [];
@@ -22,11 +23,16 @@ const Films: React.FC<Props> = ({ data }) => {
     <div>
       {/* {console.log(data)} */}
       <div className="w-screen border">
-        <select name="season" id="" className="border w-full text-xl">
-          {seasons.map((season, index, arr) => {
+        <select
+          name="season"
+          id=""
+          className="border w-full text-xl"
+          onChange={(event) => SetPlanningSeason(Number(event.target.value))}
+        >
+          {seasons.map((planningSeason, index, arr) => {
             return (
-              <option value={season.toString()} key={index}>
-                SAISON {season}
+              <option value={planningSeason.toString()} key={index}>
+                Saison {planningSeason}
               </option>
             );
           })}
@@ -35,7 +41,9 @@ const Films: React.FC<Props> = ({ data }) => {
 
       <div className="w-full">
         {data.map((film: IFilm, index: number) => {
-          return <Film film={film} key={index} episode={index + 1} />;
+          if (film.meeting.season === planningSeason) {
+            return <Film film={film} key={index} />;
+          }
         })}
       </div>
     </div>

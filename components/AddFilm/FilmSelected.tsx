@@ -11,7 +11,7 @@ type Props = {
 const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
   return (
     <div className="bg-opacity-50 bg-black w-screen h-screen fixed top-0 flex justify-center items-center p-2.5">
-      <div className="flex-col bg-slate-800	border-solid border-2 border-blue-500 w-full h-full">
+      <div className="flex-col bg-slate-300 dark:bg-slate-800	border-solid border-2 border-blue-500 w-full h-full">
         <div className="flex justify-end">
           <button
             className="bg-white"

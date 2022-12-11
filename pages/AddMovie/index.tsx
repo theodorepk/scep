@@ -22,6 +22,7 @@ const AddMovie = () => {
     filmId: 0,
   });
   const [isActive, setIsActive] = useState(false);
+  const [value, onChange] = useState(new Date());
 
   //Get the list of users
   useEffect(() => {
@@ -65,7 +66,6 @@ const AddMovie = () => {
           setIsActive={setIsActive}
         />
       )}
-
       {/* <IndyForm userId={userId} /> */}
     </div>
   );
