@@ -38,6 +38,7 @@ export default async function addMovie(
         },
         meeting: {
           cm: user,
+          attendance: [{}],
         },
       });
 
