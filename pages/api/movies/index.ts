@@ -24,6 +24,7 @@ export default async function addMovie(
         poster,
         tmdbId,
       } = req.body;
+
       //input select to choose the user (with fetching user route)
       const user = await User.findOne({ _id: userId });
 

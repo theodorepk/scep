@@ -38,8 +38,6 @@ const AddMovie = () => {
     <span>is load</span>
   ) : (
     <div>
-      <Layout />
-
       <select
         name="cm"
         id="cm-select"

@@ -10,7 +10,6 @@ interface IFetch {
 export default function Home(props: IFetch) {
   return (
     <div className="w-screen">
-      <Layout />
       <Films data={props.data} />
     </div>
   );

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/images/logo.webp";
-import { IoMdAddCircle, IoMdFilm } from "react-icons/io";
+// import { IoMdAddCircle, IoMdFilm } from "react-icons/io";
 import { IconContext } from "react-icons";
 
 const Layout = () => {
@@ -23,6 +23,9 @@ const Layout = () => {
           <Link href={"/AddMovie"}>
             {/* <IoMdAddCircle /> */}
             <span className="mr-2">Ajouter un film</span>
+          </Link>
+          <Link href={"/Admin"}>
+            <span className="mr-2">Admin</span>
           </Link>
         </IconContext.Provider>
       </div>
