@@ -1,7 +1,6 @@
 import Films from "../components/Planning/Films";
 import { IFilm } from "../interfaces/IFilm";
 import { GetServerSideProps } from "next";
-import Layout from "../components/Layout";
 
 interface IFetch {
   data: IFilm[];

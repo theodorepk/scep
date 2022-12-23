@@ -10,17 +10,14 @@ export default async function addGlobal(
 ) {
   if (req.method === "GET") {
     await connectMongo();
-    const global: IGlobal = await Global.find();
+    const global: IGlobal = await Global.findById("63a43e55421587d382a7a6d8");
     res.status(200).json(global);
   } else if (req.method === "POST") {
     const { season } = req.body;
     await connectMongo();
-    const global: IGlobal = await Global.findByIdAndUpdate(
-      "63a43e55421587d382a7a6d8",
-      {
-        currentSeason: season,
-      }
-    );
+    await Global.findByIdAndUpdate("63a43e55421587d382a7a6d8", {
+      currentSeason: season,
+    });
     res.status(200).json(`Current season has been changed to ${season}`);
   }
 }

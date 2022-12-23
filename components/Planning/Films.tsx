@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { SeasonContext } from "../../context/season-context";
 import { IFilm } from "../../interfaces/IFilm";
 import Film from "./Film";
 
@@ -7,7 +8,7 @@ type Props = {
 };
 
 const Films: React.FC<Props> = ({ data }) => {
-  const [season, setSeason] = useState(13);
+  const { season } = useContext(SeasonContext);
   const [seasons, setSeasons] = useState<Array<number>>([]);
   const [planningSeason, SetPlanningSeason] = useState(season);
 
@@ -17,11 +18,10 @@ const Films: React.FC<Props> = ({ data }) => {
       tab.push(index);
     }
     setSeasons(tab);
-  }, []);
+  }, [season]);
 
   return (
     <div>
-      {/* {console.log(data)} */}
       <div className="w-screen border">
         <select
           name="season"
@@ -29,7 +29,7 @@ const Films: React.FC<Props> = ({ data }) => {
           className="border w-full text-xl"
           onChange={(event) => SetPlanningSeason(Number(event.target.value))}
         >
-          {seasons.map((planningSeason, index, arr) => {
+          {seasons.map((planningSeason, index) => {
             return (
               <option value={planningSeason.toString()} key={index}>
                 Saison {planningSeason}
