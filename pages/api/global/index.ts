@@ -13,11 +13,28 @@ export default async function addGlobal(
     const global: IGlobal = await Global.findById("63a43e55421587d382a7a6d8");
     res.status(200).json(global);
   } else if (req.method === "POST") {
-    const { season } = req.body;
-    await connectMongo();
-    await Global.findByIdAndUpdate("63a43e55421587d382a7a6d8", {
-      currentSeason: season,
-    });
-    res.status(200).json(`Current season has been changed to ${season}`);
+    try {
+      const { currentSeason } = req.body;
+      await connectMongo();
+      const global = await Global.findById("63a43e55421587d382a7a6d8");
+      // if (season > global.currentSeason) {
+      global.currentSeason = currentSeason;
+      global.save();
+      res
+        .status(200)
+        .json(`Current season has been changed to ${currentSeason}`);
+      // } else {
+      // res.status(401).json({
+      // message: `La nouvelle saison ne peut pas être antérieure à la saison actuelle`,
+      // }
+      // );
+      // }
+    } catch (error) {
+      if (typeof error === "string") {
+        res.status(404).json({ message: error.toUpperCase() });
+      } else if (error instanceof Error) {
+        res.status(404).json({ message: error.message });
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SeasonContext } from "../../context/season-context";
+import { SeasonContext } from "../../contexts/season-context";
 import { IFilm } from "../../interfaces/IFilm";
 import Film from "./Film";
 
@@ -8,17 +8,17 @@ type Props = {
 };
 
 const Films: React.FC<Props> = ({ data }) => {
-  const { season } = useContext(SeasonContext);
+  const { currentSeason } = useContext(SeasonContext);
   const [seasons, setSeasons] = useState<Array<number>>([]);
-  const [planningSeason, SetPlanningSeason] = useState(season);
+  const [planningSeason, SetPlanningSeason] = useState(currentSeason);
 
   useEffect(() => {
     let tab = [];
-    for (let index = season; index > 0; index--) {
+    for (let index = 13; index > 0; index--) {
       tab.push(index);
     }
     setSeasons(tab);
-  }, [season]);
+  }, [currentSeason]);
 
   return (
     <div>
@@ -27,6 +27,7 @@ const Films: React.FC<Props> = ({ data }) => {
           name="season"
           id=""
           className="border w-full text-xl"
+          value={planningSeason}
           onChange={(event) => SetPlanningSeason(Number(event.target.value))}
         >
           {seasons.map((planningSeason, index) => {

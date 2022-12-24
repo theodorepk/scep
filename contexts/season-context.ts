@@ -1,11 +1,11 @@
 import React from "react";
 
 type TSeasonContext = {
-  season: number;
-  setSeason: (param: number) => void;
+  currentSeason: number;
+  setCurrentSeason: (param: number) => void;
 };
 
 export const SeasonContext = React.createContext<TSeasonContext>({
-  season: 0,
-  setSeason: () => {},
+  currentSeason: 0,
+  setCurrentSeason: () => {},
 });
