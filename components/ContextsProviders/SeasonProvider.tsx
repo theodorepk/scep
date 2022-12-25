@@ -10,6 +10,7 @@ type Props = {
 const SeasonProvider = ({ children }: Props) => {
   const [currentSeason, setCurrentSeason] = useState<number>(0);
   const [maxSeason, setMaxSeason] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const hostname: string = process.env.hostname as string;
@@ -17,6 +18,7 @@ const SeasonProvider = ({ children }: Props) => {
       const response = await axios.get<IGlobal>(`${hostname}/global`);
       setCurrentSeason(response.data.currentSeason);
       setMaxSeason(response.data.maxSeason);
+      setIsLoading(false);
     };
     fetchSeason();
   }, []);
@@ -25,7 +27,7 @@ const SeasonProvider = ({ children }: Props) => {
     <SeasonContext.Provider
       value={{ currentSeason, setCurrentSeason, maxSeason, setMaxSeason }}
     >
-      {children}
+      {!isLoading && children}
     </SeasonContext.Provider>
   );
 };
