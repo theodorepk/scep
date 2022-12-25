@@ -8,16 +8,17 @@ type Props = {
 };
 
 const Films: React.FC<Props> = ({ data }) => {
-  const { currentSeason } = useContext(SeasonContext);
+  const { currentSeason, maxSeason } = useContext(SeasonContext);
   const [seasons, setSeasons] = useState<Array<number>>([]);
   const [planningSeason, SetPlanningSeason] = useState(currentSeason);
 
   useEffect(() => {
     let tab = [];
-    for (let index = 13; index > 0; index--) {
+    for (let index = maxSeason; index > 0; index--) {
       tab.push(index);
     }
     setSeasons(tab);
+    console.log(currentSeason);
   }, [currentSeason]);
 
   return (
@@ -27,7 +28,8 @@ const Films: React.FC<Props> = ({ data }) => {
           name="season"
           id=""
           className="border w-full text-xl"
-          value={planningSeason}
+          // defaultValue={}
+          value={planningSeason.toString()}
           onChange={(event) => SetPlanningSeason(Number(event.target.value))}
         >
           {seasons.map((planningSeason, index) => {
