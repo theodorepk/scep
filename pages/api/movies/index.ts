@@ -38,6 +38,8 @@ export default async function addMovie(
           tmdbId,
         },
         meeting: {
+          episode: 1,
+          season: 1,
           cm: user,
           attendance: [{}],
         },

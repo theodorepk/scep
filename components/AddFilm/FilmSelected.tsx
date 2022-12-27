@@ -1,14 +1,32 @@
 import { IMovieForm } from "../../interfaces/IMovieForm";
 import { GrClose } from "react-icons/gr";
 import { IconContext } from "react-icons";
+import axios from "axios";
 
 type Props = {
   filmId: number;
   filmToAdd: IMovieForm;
   setIsActive: (value: boolean) => void;
+  userId: string | undefined;
 };
 
-const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
+const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
+  const submitFilm = async () => {
+    try {
+      console.log(userId);
+      const postFilm = await axios.post(`${process.env.hostname}/movies`, {
+        title: filmToAdd.title,
+        director: filmToAdd.director,
+        release_date: filmToAdd.release_date,
+        userId,
+        synopsis: filmToAdd.synopsis,
+        poster: filmToAdd.poster,
+        tmdbId: filmToAdd.filmId,
+      });
+      console.log(postFilm);
+    } catch (error) {}
+  };
+
   return (
     <div className="bg-opacity-50 bg-black w-screen h-screen fixed top-0 flex justify-center items-center p-2.5">
       <div className="flex-col bg-slate-300 dark:bg-slate-800	border-solid border-2 border-blue-500 w-full h-full">
@@ -43,6 +61,9 @@ const FilmSelected = ({ filmToAdd, setIsActive }: Props) => {
           </div>
 
           <img src={filmToAdd.poster} className="h-64" />
+          <button className="border-2 rounded-lg p-1" onClick={submitFilm}>
+            J'ajoute ce film à la scep
+          </button>
         </div>
       </div>
     </div>

@@ -62,7 +62,6 @@ const SearchMovie = ({ setFilmToAdd, setIsActive }: Props) => {
         ) : (
           <span>Cherche ton film</span>
         )}
-        :
       </div>
     </div>
   );

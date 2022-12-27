@@ -62,6 +62,7 @@ const AddMovie = () => {
           filmId={filmId}
           filmToAdd={filmToAdd}
           setIsActive={setIsActive}
+          userId={userId}
         />
       )}
       {/* <IndyForm userId={userId} /> */}
