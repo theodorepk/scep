@@ -23,6 +23,7 @@ const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
         poster: filmToAdd.poster,
         tmdbId: filmToAdd.filmId,
       });
+      console.log("test");
       console.log(postFilm);
     } catch (error) {}
   };

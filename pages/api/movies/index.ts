@@ -15,6 +15,7 @@ export default async function addMovie(
   if (req.method === "POST") {
     try {
       await connectMongo();
+
       const {
         title,
         director,
@@ -45,7 +46,7 @@ export default async function addMovie(
         },
       });
 
-      console.log(newMovie);
+      console.log("this api", newMovie);
 
       await newMovie.save();
       res.json("isOk");

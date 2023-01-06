@@ -10,7 +10,7 @@ import FilmSelected from "../../components/AddFilm/FilmSelected";
 const AddMovie = () => {
   const [users, setUsers] = useState<IUser[]>();
   const [isLoading, setIsLoading] = useState(true);
-  const [userId, setUserId] = useState<string>();
+  const [userId, setUserId] = useState<string>("");
   const [filmId, setFilmId] = useState(0);
   const [filmToAdd, setFilmToAdd] = useState<IMovieForm>({
     title: "",
@@ -56,7 +56,11 @@ const AddMovie = () => {
             );
           })}
       </select>
-      <SearchMovie setFilmToAdd={setFilmToAdd} setIsActive={setIsActive} />
+      <SearchMovie
+        setFilmToAdd={setFilmToAdd}
+        setIsActive={setIsActive}
+        userId={userId}
+      />
       {isActive && (
         <FilmSelected
           filmId={filmId}
