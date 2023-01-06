@@ -16,7 +16,7 @@ const Layout = () => {
             // color: "blue"
           }}
         >
-          <Link href={"/"}>
+          <Link href={"/Planning"}>
             {/* <IoMdFilm /> */}
             Films
           </Link>

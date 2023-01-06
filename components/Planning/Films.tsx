@@ -9,6 +9,7 @@ type Props = {
 
 const Films: React.FC<Props> = ({ data }) => {
   const { currentSeason, maxSeason } = useContext(SeasonContext);
+
   const [seasons, setSeasons] = useState<Array<number>>([]);
   const [planningSeason, SetPlanningSeason] = useState(currentSeason);
 

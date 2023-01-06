@@ -1,10 +1,12 @@
 import React from "react";
+import { IFilm } from "../interfaces/IFilm";
 
-type TFilmsContext = {};
+type TFilmsContext = {
+  films: IFilm[];
+  setFilms: (param: IFilm[]) => void;
+};
 
-export const SeasonContext = React.createContext<TFilmsContext>({
-  currentSeason: 0,
-  setCurrentSeason: () => {},
-  maxSeason: 0,
-  setMaxSeason: () => {},
+export const FilmContext = React.createContext<TFilmsContext>({
+  films: [],
+  setFilms: () => {},
 });
