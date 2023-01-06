@@ -13,7 +13,7 @@ export default function Home(props: IFetch) {
 
   useEffect(() => {
     setFilms(props.data);
-  }, []);
+  }, [setFilms, props.data]);
 
   return (
     <div className="w-screen">

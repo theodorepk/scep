@@ -66,7 +66,7 @@ const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
 
           <img src={filmToAdd.poster} className="h-64" />
           <button className="border-2 rounded-lg p-1" onClick={submitFilm}>
-            J'ajoute ce film à la scep
+            Ajouter ce film à la scep
           </button>
         </div>
       </div>
