@@ -24,6 +24,7 @@ export default async function addMovie(
         synopsis,
         poster,
         tmdbId,
+        season,
       } = req.body;
 
       //input select to choose the user (with fetching user route)
@@ -39,19 +40,26 @@ export default async function addMovie(
           tmdbId,
         },
         meeting: {
-          episode: 1,
-          season: 1,
+          episode: Number(2),
+          season,
           cm: user,
-          attendance: [{}],
+          attendance: [
+            {
+              user,
+              note: null,
+            },
+          ],
         },
       });
 
       console.log("this api", newMovie);
 
       await newMovie.save();
+
       res.json("isOk");
     } catch (error) {
       res.status(400).json({ error });
+      console.log(error);
     }
   } else if (req.method === "GET") {
     await connectMongo();

@@ -1,7 +1,9 @@
 import { IMovieForm } from "../../interfaces/IMovieForm";
 import { GrClose } from "react-icons/gr";
 import { IconContext } from "react-icons";
+import { SeasonContext } from "../../contexts/season-context";
 import axios from "axios";
+import { useContext } from "react";
 
 type Props = {
   filmId: number;
@@ -11,9 +13,10 @@ type Props = {
 };
 
 const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
+  const { currentSeason } = useContext(SeasonContext);
+
   const submitFilm = async () => {
     try {
-      console.log(userId);
       const postFilm = await axios.post(`${process.env.hostname}/movies`, {
         title: filmToAdd.title,
         director: filmToAdd.director,
@@ -22,8 +25,8 @@ const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
         synopsis: filmToAdd.synopsis,
         poster: filmToAdd.poster,
         tmdbId: filmToAdd.filmId,
+        season: currentSeason,
       });
-      console.log("test");
       console.log(postFilm);
     } catch (error) {}
   };

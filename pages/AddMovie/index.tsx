@@ -1,6 +1,6 @@
 import { IMovieForm } from "../../interfaces/IMovieForm";
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout";
+// import Layout from "../../components/Layout";
 import axios from "axios";
 import { IUser } from "../../interfaces/IUser";
 import SearchMovie from "../../components/AddFilm/SearchMovie";
