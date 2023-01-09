@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import { SeasonContext } from "../../contexts/season-context";
+
 import { IFilm } from "../../interfaces/IFilm";
 import Film from "./Film";
 
@@ -8,19 +10,27 @@ type Props = {
 };
 
 const Films: React.FC<Props> = ({ data }) => {
-  const { currentSeason, maxSeason } = useContext(SeasonContext);
+  const {
+    currentSeason,
+    // maxSeason
+  } = useContext(SeasonContext);
 
   const [seasons, setSeasons] = useState<Array<number>>([]);
   const [planningSeason, SetPlanningSeason] = useState(currentSeason);
 
   useEffect(() => {
     let tab = [];
+    const maxSeason = Math.max(...data.map((o) => o.meeting.season));
+
     for (let index = maxSeason; index > 0; index--) {
       tab.push(index);
     }
     setSeasons(tab);
     console.log(currentSeason);
-  }, [currentSeason, maxSeason]);
+  }, [
+    currentSeason,
+    //  maxSeason
+  ]);
 
   return (
     <div>

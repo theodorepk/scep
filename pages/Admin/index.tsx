@@ -8,7 +8,10 @@ const Admin = () => {
   const [formCurrentSeason, setFormCurrentSeason] = useState(0);
   const [formMaxSeason, setFormMaxSeason] = useState(0);
   const [messages, SetMessages] = useState<string[]>([]);
-  const { setCurrentSeason, setMaxSeason } = useContext(SeasonContext);
+  const {
+    setCurrentSeason,
+    // setMaxSeason
+  } = useContext(SeasonContext);
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>,
@@ -30,7 +33,7 @@ const Admin = () => {
       }
       if (response.status === 200 && method === `max`) {
         tab.push(`La saison max est définie sur ${formMaxSeason}`);
-        setMaxSeason(formMaxSeason);
+        // setMaxSeason(formMaxSeason);
       }
       SetMessages(tab);
     } catch (error: any) {
