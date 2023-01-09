@@ -25,6 +25,7 @@ const SearchMovie = ({ setFilmToAdd, setIsActive, userId }: Props) => {
       const response = await axios.get(
         `${hostname}/themoviedb?search=${search}&year=${year}`
       );
+      console.log(response);
       setData(response.data);
     };
     fetch();
