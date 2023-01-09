@@ -27,10 +27,7 @@ const Films: React.FC<Props> = ({ data }) => {
     }
     setSeasons(tab);
     console.log(currentSeason);
-  }, [
-    currentSeason,
-    //  maxSeason
-  ]);
+  }, [currentSeason]);
 
   return (
     <div>
