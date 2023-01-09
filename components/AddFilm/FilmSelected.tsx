@@ -2,7 +2,7 @@ import { IMovieForm } from "../../interfaces/IMovieForm";
 import { GrClose } from "react-icons/gr";
 import { IconContext } from "react-icons";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SeasonContext } from "../../contexts/season-context";
 import { FilmContext } from "../../contexts/films-context";
 
@@ -18,6 +18,7 @@ type Props = {
 const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
   const { currentSeason } = useContext(SeasonContext);
   const { films } = useContext(FilmContext);
+  const [message, setMessage] = useState("");
 
   const submitFilm = async () => {
     //initialize season and episode
@@ -34,36 +35,36 @@ const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
     const twoSeasons = seasonMovies.concat(nextSeasonMovies);
 
     if (films.filter((film) => film.infos.tmdbId === filmToAdd.filmId).length) {
-      console.log("film already add to SCEP");
+      setMessage("Ce film a été déjà soumis à la SCEP");
     } else if (
       twoSeasons.filter((film) => film.meeting.cm._id === userId).length === 2
     ) {
-      console.log("user already had movies on two next season");
+      setMessage(
+        "Tu as déjà choisi un film pour la saison en cours et pour la saison d'après"
+      );
     } else {
       if (
         twoSeasons.filter((film) => film.meeting.cm._id === userId).length === 1
       ) {
-        console.log("film in next season");
         season += 1;
         episode = nextSeasonMovies.length + 1;
       } else {
-        console.log("film in first season");
         episode = seasonMovies.length + 1;
       }
 
       try {
-        // const postFilm = await axios.post(`${process.env.hostname}/movies`, {
-        //   title: filmToAdd.title,
-        //   director: filmToAdd.director,
-        //   release_date: filmToAdd.release_date,
-        //   userId,
-        //   synopsis: filmToAdd.synopsis,
-        //   poster: filmToAdd.poster,
-        //   tmdbId: filmToAdd.filmId,
-        //   season,
-        //   episode,
-        // });
-        // console.log(postFilm);
+        const postFilm = await axios.post(`${process.env.hostname}/movies`, {
+          title: filmToAdd.title,
+          director: filmToAdd.director,
+          release_date: filmToAdd.release_date,
+          userId,
+          synopsis: filmToAdd.synopsis,
+          poster: filmToAdd.poster,
+          tmdbId: filmToAdd.filmId,
+          season,
+          episode,
+        });
+        console.log(postFilm);
         console.log(
           `movie added in season ${season} and it's the ${episode} movie of the season`
         );
@@ -88,6 +89,7 @@ const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
         </div>
 
         <div>
+          <p>{message && <span>{message}</span>}</p>
           <div className="text-center">
             <span className="font-bold ">{filmToAdd.title}</span>
           </div>

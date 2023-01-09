@@ -23,7 +23,6 @@ const Films: React.FC<Props> = ({ data }) => {
       tab.push(index);
     }
     setSeasons(tab);
-    console.log(currentSeason);
   }, [currentSeason]);
 
   return (
