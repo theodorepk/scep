@@ -21,8 +21,9 @@ const SearchMovie = ({ setFilmToAdd, setIsActive, userId }: Props) => {
 
   useEffect(() => {
     const fetch = async () => {
+      const hostname: string = process.env.hostname as string;
       const response = await axios.get(
-        `http://localhost:3000/api/themoviedb?search=${search}&year=${year}`
+        `${hostname}/api/themoviedb?search=${search}&year=${year}`
       );
       setData(response.data);
     };
