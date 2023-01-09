@@ -14,13 +14,17 @@ const SeasonProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const hostname: string = process.env.hostname as string;
-    const fetchSeason = async () => {
-      const response = await axios.get<IGlobal>(`${hostname}/global`);
-      setCurrentSeason(response.data.currentSeason);
-
-      setIsLoading(false);
-    };
-    fetchSeason();
+    try {
+      const fetchSeason = async () => {
+        const response = await axios.get<IGlobal>(`${hostname}/global`);
+        console.log(response);
+        setCurrentSeason(response.data.currentSeason);
+        setIsLoading(false);
+      };
+      fetchSeason();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
