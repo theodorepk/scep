@@ -27,7 +27,8 @@ const AddMovie = () => {
   //Get the list of users
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:3000/api/users");
+      const hostname: string = process.env.hostname as string;
+      const response = await axios.get(`${hostname}/users`);
       setUsers(response.data);
       setIsLoading(false);
     };
