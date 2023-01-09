@@ -25,6 +25,7 @@ export default async function addMovie(
         poster,
         tmdbId,
         season,
+        episode,
       } = req.body;
 
       //input select to choose the user (with fetching user route)
@@ -40,7 +41,7 @@ export default async function addMovie(
           tmdbId,
         },
         meeting: {
-          episode: Number(2),
+          episode,
           season,
           cm: user,
           attendance: [
