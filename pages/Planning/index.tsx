@@ -23,7 +23,8 @@ export default function Home(props: IFetch) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await fetch("http://localhost:3000/api/movies");
+  const hostname: string = process.env.hostname as string;
+  const response = await fetch(`${hostname}/movies`);
   const data: IFilm[] = await response.json();
   return { props: { data } };
 };

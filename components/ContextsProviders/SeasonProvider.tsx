@@ -17,7 +17,6 @@ const SeasonProvider = ({ children }: Props) => {
     try {
       const fetchSeason = async () => {
         const response = await axios.get<IGlobal>(`${hostname}/global`);
-        console.log(response);
         setCurrentSeason(response.data.currentSeason);
         setIsLoading(false);
       };
