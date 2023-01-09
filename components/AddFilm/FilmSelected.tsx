@@ -20,24 +20,55 @@ const FilmSelected = ({ filmToAdd, setIsActive, userId }: Props) => {
   const { films } = useContext(FilmContext);
 
   const submitFilm = async () => {
+    //initialize season and episode
+    let season = currentSeason;
+    let episode = 0;
+
+    //list of current season films
     const seasonMovies = films.filter(
       (film) => film.meeting.season === currentSeason
     );
+    const nextSeasonMovies = films.filter(
+      (film) => film.meeting.season === currentSeason + 1
+    );
+    const twoSeasons = seasonMovies.concat(nextSeasonMovies);
 
-    try {
-      const postFilm = await axios.post(`${process.env.hostname}/movies`, {
-        title: filmToAdd.title,
-        director: filmToAdd.director,
-        release_date: filmToAdd.release_date,
-        userId,
-        synopsis: filmToAdd.synopsis,
-        poster: filmToAdd.poster,
-        tmdbId: filmToAdd.filmId,
-        season: currentSeason,
-        episode: seasonMovies.length + 1,
-      });
-      console.log(postFilm);
-    } catch (error) {}
+    if (films.filter((film) => film.infos.tmdbId === filmToAdd.filmId).length) {
+      console.log("film already add to SCEP");
+    } else if (
+      twoSeasons.filter((film) => film.meeting.cm._id === userId).length === 2
+    ) {
+      console.log("user already had movies on two next season");
+    } else {
+      if (
+        twoSeasons.filter((film) => film.meeting.cm._id === userId).length === 1
+      ) {
+        console.log("film in next season");
+        season += 1;
+        episode = nextSeasonMovies.length + 1;
+      } else {
+        console.log("film in first season");
+        episode = seasonMovies.length + 1;
+      }
+
+      try {
+        // const postFilm = await axios.post(`${process.env.hostname}/movies`, {
+        //   title: filmToAdd.title,
+        //   director: filmToAdd.director,
+        //   release_date: filmToAdd.release_date,
+        //   userId,
+        //   synopsis: filmToAdd.synopsis,
+        //   poster: filmToAdd.poster,
+        //   tmdbId: filmToAdd.filmId,
+        //   season,
+        //   episode,
+        // });
+        // console.log(postFilm);
+        console.log(
+          `movie added in season ${season} and it's the ${episode} movie of the season`
+        );
+      } catch (error) {}
+    }
   };
 
   return (
